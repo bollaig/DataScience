@@ -1,0 +1,5 @@
+install.packages("swirl")
+library(swirl)
+install_course_zip("C:/Users/user/Documents/Msc/swirl_courses-master.zip", multi = TRUE, which_course = "R Programming")
+#install_course_zip("C:/Users/user/swirl_courses-master.zip", multi = TRUE, which_course = "R Programming")
+swirl()
