@@ -65,3 +65,48 @@ str(Age)
 str(Gender)
 new_data <- my_data[order(Gender, Age),]
 new_data
+
+new_data
+
+new_data_CC <- complete.cases(new_data)
+new_data_CC
+
+new_data_NCC <- !complete.cases(new_data)
+new_data_NCC
+
+new_data_omitNA <- na.omit(new_data)
+new_data_omitNA
+
+new_data_NA <- !na.omit(new_data)
+new_data_NA
+
+cat("sdfdf")
+complete_data <- new_data[complete.cases(new_data), ]
+complete_data
+
+?mean()
+
+mean(complete_data$Age)
+
+new_data
+
+new_data[new_data$Gender == "M", ]
+
+females <- new_data[new_data$Gender == "F", ]
+females
+
+startdate <- "2018-02-05"
+enddate <- "2018-20-10"
+
+daterange <- new_data[new_data$Date > startdate & new_data$Date < enddate]
+daterange
+
+new_data
+
+my_data
+
+attach(my_data)
+new_data <- subset(my_data, Gender == "M" & Age < 35, select = c(Gender: Q4))
+new_data
+
+
