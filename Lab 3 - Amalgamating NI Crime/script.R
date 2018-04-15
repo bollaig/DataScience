@@ -49,6 +49,9 @@ head(AllNICrimeData)
 AllNICrimeData.bkup.c <- AllNICrimeData
 #AllNICrimeData <- AllNICrimeData.bkup.c
 
+
+#d) Remove 'On or near' & Flag Missing Values #####################################################################
+
 attach(AllNICrimeData) # not woring for some reason
 
 AllNICrimeData$Location <- sub('on or near ', '', AllNICrimeData$Location, ignore.case = TRUE)
@@ -58,7 +61,7 @@ str(AllNICrimeData)
 head(AllNICrimeData)
 
 
-#d) Lookup Postcode ###############################################################################################
+#e) Lookup Postcode ###############################################################################################
 
 GetMostCommon <- function(matches, unique_matches) { # get the mode of the matches vector
     # For each unique match, count (tabulate) the occurrences in the non-unique list and select the most frequent (max)
@@ -118,7 +121,7 @@ write.csv(postcodes_df, file = '2017-12/postcodes_df.csv', quote = FALSE, na = "
 
 
 
-#e) Append postcode ###############################################################################################
+#f) Append postcode ###############################################################################################
 AllNICrimeData.bkup.e <- AllNICrimeData
 
 AllNICrimeData <- cbind(AllNICrimeData, postcodes_df)  # apend new column to the right of the existing attributes
@@ -129,7 +132,7 @@ str(AllNICrimeData)
 
 
 
-#f) Approximate Location ###############################################################################################
+#g) Approximate Location ###############################################################################################
 
 TidyLocation <- function(lat, lon, precision) {
     # Use the adjsted coordinates to find a similar location, ignore NA locations
@@ -168,6 +171,8 @@ for (i in 1:10000) {                            # limit to the first 10,000
 
 head(AllNICrimeData, 10)
 str(AllNICrimeData)
+
+#i) Write csv ####################################################################################################
 
 write.csv(postcodes_df, file = '2017-12/FinalNICrimeData.csv', quote = FALSE, na = " ", row.names = FALSE)
 
