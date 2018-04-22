@@ -33,12 +33,12 @@ p2016_data  <- html_text(p2016_data_html)
 
 
 #Remove the thousands separator
-p1991_data <- sub(',', '', p1991_data)
-p1996_data <- sub(',', '', p1996_data)
-p2002_data <- sub(',', '', p2002_data)
-p2006_data <- sub(',', '', p2006_data)
-p2011_data <- sub(',', '', p2011_data)
-p2016_data <- sub(',', '', p2016_data)
+p1991_data <- gsub(',', '', p1991_data)
+p1996_data <- gsub(',', '', p1996_data)
+p2002_data <- gsub(',', '', p2002_data)
+p2006_data <- gsub(',', '', p2006_data)
+p2011_data <- gsub(',', '', p2011_data)
+p2016_data <- gsub(',', '', p2016_data)
 
 
 #Convert to integers
@@ -57,7 +57,7 @@ pop_stats <- data.frame(area = area_data, status = status_data, p1991  = p1991_d
                                                                 p2006  = p2006_data,
                                                                 p2011  = p2011_data,
                                                                 p2016  = p2016_data)
-head(pop_stats, 60)
+head(pop_stats)
 
 
 #Display data frame information
@@ -81,5 +81,3 @@ totals <- c(p1991_total, p1996_total, p2002_total, p2006_total, p2011_total, p20
 
 plot(totals, type = 'b', xlab = 'Census Year', ylab = 'Population', xaxt = "n")
 axis(1, at = 1:6, labels = xaxis)
-
-
